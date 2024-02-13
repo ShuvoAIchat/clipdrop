@@ -3,7 +3,7 @@ const sendButton = document.getElementById('send');
 const responseDiv = document.getElementById('response');
 
 // Replace {YOUR_API_KEY_HERE} with your actual API key from ClipDrop
-const apiKey = 'Bearer {YOUR_API_KEY_HERE}';
+const apiKey = 'Bearer {945b4b3a92571b59529c2a10f03b0adb6775cc6a6062ab460ccc3d9fdf9b2cfb228cce23fb69b95af291dba14d97f1ec}';
 const url = 'https://clipdrop-api.co/text-to-image/v1';
 
 sendButton.addEventListener('click', () => {
