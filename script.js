@@ -1,33 +1,14 @@
-const promptInput = document.getElementById('prompt');
-const sendButton = document.getElementById('send');
-const responseDiv = document.getElementById('response');
+const form = new FormData()
+form.append('prompt', 'shot of vaporwave fashion dog in miami')
 
-// Replace {YOUR_API_KEY_HERE} with your actual API key from ClipDrop
-const apiKey = 'Bearer {945b4b3a92571b59529c2a10f03b0adb6775cc6a6062ab460ccc3d9fdf9b2cfb228cce23fb69b95af291dba14d97f1ec}';
-const url = 'https://clipdrop-api.co/text-to-image/v1';
-
-sendButton.addEventListener('click', () => {
-  const prompt = promptInput.value;
-
-  // Set up the prompt and other parameters
-  const body = {
-    prompt: prompt
-  };
-
-  // Configure and send the request
-  const headers = {
-    'Authorization': apiKey,
-    'Content-Type': 'application/json'
-  };
-
-  fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
+fetch('https://clipdrop-api.co/text-to-image/v1', {
+  method: 'POST',
+  headers: {
+    'x-api-key': 945b4b3a92571b59529c2a10f03b0adb6775cc6a6062ab460ccc3d9fdf9b2cfb228cce23fb69b95af291dba14d97f1ec,
+  },
+  body: form,
+})
+  .then(response => response.arrayBuffer())
+  .then(buffer => {
+    // buffer here is a binary representation of the returned image
   })
-  .then(response => response.json())
-  .then(data => {
-    responseDiv.innerHTML = `<img src="${data.url}" alt="Generated Image" />`;
-  })
-  .catch(error => {
-    responseDiv.innerHTML = `<p>Error: ${error.message
